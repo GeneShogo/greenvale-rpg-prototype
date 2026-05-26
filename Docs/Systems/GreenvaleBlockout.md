@@ -6,7 +6,9 @@ The goal is not a finished decorated zone. It is a readable spatial framework fo
 
 ## Scene Structure
 
-`GreenvaleBlockoutBuilder` is attached to the `--- WORLD ---` root. In edit mode, it creates/verifies these child groups:
+`GreenvaleBlockoutBuilder` is attached to the `--- WORLD ---` root. It is now locked for manual editing and does not rebuild automatically when the scene opens or when entering Play Mode.
+
+The existing generated blockout hierarchy should contain these child groups:
 
 - `Landmark_Markers`
 - `Terrain_Blockout`
@@ -22,7 +24,7 @@ The goal is not a finished decorated zone. It is a readable spatial framework fo
 - `Hilltop_Overlook`
 - `Set_Dressing_Placeholders`
 
-The existing `Ground_TestPlane` is reparented under `Terrain_Blockout` while keeping its world position.
+The existing `Ground_TestPlane` may be reparented under `Terrain_Blockout` by the builder during intentional regeneration while keeping its world position.
 
 ## Landmark Markers
 
@@ -74,6 +76,32 @@ The builder creates neutral materials under `Assets/_Project/Materials/Blockout/
 
 These are only for readability during blockout.
 
+## Safe Manual Editing
+
+Treat the current blockout objects as editable scene placeholders. Move, scale, disable, or replace them by hand as needed.
+
+Keep these safeguards in place on `GreenvaleBlockoutBuilder`:
+
+- `autoGenerateInEditMode`: disabled
+- `allowRegeneration`: disabled
+- `regenerationConfirmation`: blank
+
+These settings prevent accidental rebuilds from overwriting manual edits.
+
+## Manual Regeneration
+
+Only regenerate if you intentionally want the builder to restore named placeholders to its authored positions and scales.
+
+To regenerate:
+
+1. Select `--- WORLD ---`.
+2. Enable `allowRegeneration`.
+3. Enter `REBUILD_GREENVALE_BLOCKOUT` in `regenerationConfirmation`.
+4. Use the component context menu `Build Greenvale Blockout`.
+5. Disable `allowRegeneration` and clear `regenerationConfirmation` afterward.
+
+Do not regenerate after replacing placeholders with Quaternius assets unless resetting those objects is intended.
+
 ## Replacing With Quaternius Assets
 
 Later, replace placeholders manually with licensed Quaternius assets from `Assets/ThirdParty/Quaternius/`.
@@ -84,7 +112,8 @@ Recommended workflow:
 2. Duplicate or prefab project-ready replacements under `Assets/_Project/Prefabs/`.
 3. Replace one placeholder group at a time.
 4. Keep the original placeholder object disabled or nearby until scale and collision are verified.
-5. Do not use copyrighted maps, names, quest text, icons, music, or recreated layouts from other games.
+5. Leave `GreenvaleBlockoutBuilder` locked so manual replacements are not overwritten.
+6. Do not use copyrighted maps, names, quest text, icons, music, or recreated layouts from other games.
 
 ## Player And NPC Preservation
 

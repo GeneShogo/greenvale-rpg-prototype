@@ -1,30 +1,67 @@
 # Build Notes
 
+## Milestone 3.5 - Lock Blockout and Prepare for Asset Replacement
+
+### Setup Notes
+
+- The Greenvale blockout is now locked for manual editing.
+- `GreenvaleBlockoutBuilder` remains on `--- WORLD ---`, but it no longer auto-generates when the scene opens.
+- Entering Play Mode does not regenerate or reset blockout objects.
+- Existing generated blockout objects should remain in the scene for the human to edit or replace manually.
+- `autoGenerateInEditMode` should remain disabled.
+- `allowRegeneration` should remain disabled unless a deliberate full rebuild is needed.
+
+### Manual Regeneration
+
+Only regenerate intentionally:
+
+1. Select `--- WORLD ---`.
+2. On `GreenvaleBlockoutBuilder`, enable `allowRegeneration`.
+3. Enter `REBUILD_GREENVALE_BLOCKOUT` in `regenerationConfirmation`.
+4. Use the component context menu `Build Greenvale Blockout`.
+5. Disable `allowRegeneration` again after the rebuild.
+
+Regeneration can reset named blockout placeholders back to builder-authored positions and scales, so do not run it after replacing placeholders with Quaternius assets unless that reset is intended.
+
+### Testing Steps
+
+1. Open `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
+2. Confirm the blockout hierarchy remains present under `--- WORLD ---`.
+3. Confirm `GreenvaleBlockoutBuilder` has `autoGenerateInEditMode` disabled and `allowRegeneration` disabled.
+4. Enter Play Mode and confirm the blockout does not reset.
+5. Verify player movement, camera follow, interaction raycast, and `Abbey Steward Maren` dialogue still work.
+
+### Unity Editor Actions Required
+
+- Save the scene after confirming the locked builder settings.
+- Keep future Quaternius replacements under project-created prefabs or scene objects in `Assets/_Project/`.
+- Keep original third-party source assets under `Assets/ThirdParty/`.
+
 ## Milestone 3 - Greenvale Abbey Blockout Framework
 
 ### Setup Notes
 
 - Open `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
 - The `--- WORLD ---` object has a `GreenvaleBlockoutBuilder` component.
-- In edit mode, the builder creates/verifies the blockout hierarchy, visible marker primitives, placeholder geometry, and blockout materials.
+- The builder originally created/verified the blockout hierarchy, visible marker primitives, placeholder geometry, and blockout materials. As of Milestone 3.5 it is locked and manual-only.
 - Generated blockout materials are stored under `Assets/_Project/Materials/Blockout/`.
 - The active scene path remains `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
-- The builder reparents `Ground_TestPlane` under `Terrain_Blockout` without changing its world position.
+- The builder can reparent `Ground_TestPlane` under `Terrain_Blockout` without changing its world position when manually regenerated.
 - `PlayerSpawnPoint`, `PlayerSceneBootstrap`, and `Abbey Steward Maren` are preserved.
 
 ### Testing Steps
 
 1. Open `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
 2. Select `--- WORLD ---` and confirm `GreenvaleBlockoutBuilder` is enabled.
-3. If the hierarchy has not generated yet, use the component context menu `Build Greenvale Blockout`.
+3. If the hierarchy has not generated yet, follow the Milestone 3.5 manual regeneration steps.
 4. Confirm these child groups exist under `--- WORLD ---`: `Landmark_Markers`, `Terrain_Blockout`, `Roads_And_Paths`, `Abbey_Hub`, `Training_Yard`, `Forest_Edge`, `Farm_Field`, `Quarry_Road`, `Quarry_Entrance`, `Base_Plot`, `Creek_Or_Pond`, `Hilltop_Overlook`, and `Set_Dressing_Placeholders`.
 5. Confirm the named landmark markers and placeholder blockouts are visible in the scene.
 6. Press Play and verify movement, camera follow, and `Abbey Steward Maren` dialogue still work.
 
 ### Unity Editor Actions Required
 
-- Let Unity compile the new `GreenvaleBlockoutBuilder` script.
-- Save the scene after the builder generates the framework if you want the generated objects serialized immediately.
+- Let Unity compile the `GreenvaleBlockoutBuilder` script.
+- Save the scene after manually generating or editing blockout objects.
 - Replace placeholder primitives manually with Quaternius assets later, keeping third-party source assets under `Assets/ThirdParty/` and project prefabs under `Assets/_Project/`.
 
 ## Milestone 2 - Interaction and NPC Dialogue

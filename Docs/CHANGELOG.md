@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-05-26 - Milestone 3.5: Lock Blockout and Prepare for Asset Replacement
+
+- Locked `GreenvaleBlockoutBuilder` so it no longer regenerates on scene open or Play Mode entry.
+- Added manual regeneration safeguards with `allowRegeneration` and a confirmation token.
+- Preserved existing blockout objects, player spawn, player bootstrap, camera, interaction raycast, and `Abbey Steward Maren` dialogue setup.
+- Updated blockout documentation for safe manual editing and Quaternius replacement workflow.
+
 ## 2026-05-26 - Milestone 3: Greenvale Abbey Blockout Framework
 
 - Added a `GreenvaleBlockoutBuilder` component to the `--- WORLD ---` scene root.

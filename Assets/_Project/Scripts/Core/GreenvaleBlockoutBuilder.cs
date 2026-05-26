@@ -12,9 +12,12 @@ namespace GreenvaleAbbey.Core
     public sealed class GreenvaleBlockoutBuilder : MonoBehaviour
     {
         private const string MaterialFolder = "Assets/_Project/Materials/Blockout";
+        private const string RegenerationToken = "REBUILD_GREENVALE_BLOCKOUT";
 
         [Header("Generation")]
-        [SerializeField] private bool buildOnEnable = true;
+        [SerializeField] private bool autoGenerateInEditMode = false;
+        [SerializeField] private bool allowRegeneration = false;
+        [SerializeField] private string regenerationConfirmation = "";
         [SerializeField] private bool reparentGroundPlane = true;
 
         [Header("Marker Scale")]
@@ -24,14 +27,32 @@ namespace GreenvaleAbbey.Core
 
         private void OnEnable()
         {
-            if (buildOnEnable)
+            if (autoGenerateInEditMode && !Application.isPlaying)
             {
-                Build();
+                TryBuild();
             }
         }
 
         [ContextMenu("Build Greenvale Blockout")]
-        public void Build()
+        public void TryBuild()
+        {
+            if (!CanRegenerate())
+            {
+                Debug.LogWarning(
+                    $"Greenvale blockout regeneration is locked. To rebuild intentionally, enable {nameof(allowRegeneration)} and enter {RegenerationToken} in {nameof(regenerationConfirmation)}.",
+                    this);
+                return;
+            }
+
+            Build();
+        }
+
+        private bool CanRegenerate()
+        {
+            return allowRegeneration && regenerationConfirmation == RegenerationToken;
+        }
+
+        private void Build()
         {
             CacheMaterials();
 
