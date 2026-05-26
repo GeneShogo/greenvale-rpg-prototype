@@ -9,7 +9,9 @@ namespace GreenvaleAbbey.Interaction
         [Header("Raycast")]
         [SerializeField] private Camera sourceCamera;
         [SerializeField] private Transform fallbackOrigin;
+        [SerializeField] private Vector3 originOffset = new Vector3(0f, 1.4f, 0f);
         [SerializeField] private float interactionDistance = 3f;
+        [SerializeField] private float interactionRadius = 0.35f;
         [SerializeField] private LayerMask interactionLayers = ~0;
         [SerializeField] private QueryTriggerInteraction triggerInteraction = QueryTriggerInteraction.Ignore;
 
@@ -71,7 +73,9 @@ namespace GreenvaleAbbey.Interaction
                 Debug.DrawRay(ray.origin, ray.direction * interactionDistance, Color.yellow);
             }
 
-            RaycastHit[] hits = Physics.RaycastAll(ray, interactionDistance, interactionLayers, triggerInteraction);
+            RaycastHit[] hits = interactionRadius > 0f
+                ? Physics.SphereCastAll(ray, interactionRadius, interactionDistance, interactionLayers, triggerInteraction)
+                : Physics.RaycastAll(ray, interactionDistance, interactionLayers, triggerInteraction);
             if (hits.Length == 0)
             {
                 return null;
@@ -98,13 +102,15 @@ namespace GreenvaleAbbey.Interaction
 
         private Ray BuildRay()
         {
+            Transform origin = fallbackOrigin != null ? fallbackOrigin : transform;
+            Vector3 rayOrigin = origin.position + originOffset;
+
             if (sourceCamera != null)
             {
-                return new Ray(sourceCamera.transform.position, sourceCamera.transform.forward);
+                return new Ray(rayOrigin, sourceCamera.transform.forward);
             }
 
-            Transform origin = fallbackOrigin != null ? fallbackOrigin : transform;
-            return new Ray(origin.position + Vector3.up * 1.5f, origin.forward);
+            return new Ray(rayOrigin, origin.forward);
         }
 
         private bool WasInteractPressed()

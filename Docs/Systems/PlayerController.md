@@ -4,7 +4,7 @@ Milestone 1 adds a small third-person gameplay stack for the GreenvaleAbbey scen
 
 ## Runtime Setup
 
-`PlayerSceneBootstrap` lives on `--- GAMEPLAY ---` in `Assets/Scenes/GreenvaleAbbey.unity`.
+`PlayerSceneBootstrap` lives on `--- GAMEPLAY ---` in `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
 
 On play it:
 
@@ -58,13 +58,15 @@ Inspector tuning fields:
 
 ## Interaction Raycast
 
-`InteractionRaycaster` casts from the assigned camera forward. If no camera is assigned, it falls back to the player transform. It detects colliders whose object or parent implements `IInteractable`.
+`InteractionRaycaster` casts from the player/fallback origin plus `originOffset`, using the assigned camera's forward direction. If no camera is assigned, it falls back to the player transform's forward direction. It detects colliders whose object or parent implements `IInteractable`.
 
 Inspector tuning fields:
 
 - `sourceCamera`
 - `fallbackOrigin`
+- `originOffset`
 - `interactionDistance`
+- `interactionRadius`
 - `interactionLayers`
 - `triggerInteraction`
 - `interactKey`

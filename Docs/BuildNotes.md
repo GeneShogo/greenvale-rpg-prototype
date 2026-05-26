@@ -1,10 +1,41 @@
 # Build Notes
 
+## Milestone 2 - Interaction and NPC Dialogue
+
+### Setup Notes
+
+- Open `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
+- `Abbey Steward Maren` is placed under `--- TEST OBJECTS ---` and has an `NPCDialogue` component.
+- The dialogue system builds a simple standard Unity UI panel at runtime through `DialogueUIManager`.
+- TextMeshPro is not listed in `Packages/manifest.json`, so this milestone uses standard Unity UI `Text` from `com.unity.ugui`.
+- The dialogue panel shows the NPC name, dialogue body, and a Close button.
+- Interaction casts from the player/eye position in the camera's facing direction, so the inspector distance is measured from the player rather than from the third-person camera.
+- Keyboard controls:
+  - E: interact with the NPC; also closes an open dialogue after the opening frame.
+  - Escape: close dialogue.
+
+### Testing Steps
+
+1. Open `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
+2. Press Play.
+3. Walk to `Abbey Steward Maren`.
+4. Aim the camera/player interaction ray at the NPC within interaction distance.
+5. Press E.
+6. Confirm the dialogue UI opens with `Abbey Steward Maren` and the placeholder dialogue text.
+7. Press E, press Escape, or click Close to dismiss the panel.
+8. Confirm player movement and camera control resume after closing.
+
+### Unity Editor Actions Required
+
+- Allow Unity to reimport/compile the new scripts.
+- Confirm `ProjectSettings/EditorBuildSettings.asset` lists `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
+- Tune `NPCDialogue` text, `InteractionRaycaster` distance, or `InteractionRaycaster` radius in the inspector if playtest spacing changes.
+
 ## Milestone 1 - Player Controller and Camera
 
 ### Setup Notes
 
-- Open `Assets/Scenes/GreenvaleAbbey.unity`.
+- Open `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
 - The scene has a `PlayerSceneBootstrap` component on `--- GAMEPLAY ---`.
 - On play, the bootstrap finds `PlayerSpawnPoint`, creates a simple capsule player, adds a `CharacterController`, and wires `Main Camera` to follow the player.
 - Input uses Unity's Input System package directly:

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-25 - Milestone 2: Interaction and NPC Dialogue
+
+- Added an `NPCDialogue` interactable component for simple data-ready NPC conversations.
+- Added a runtime `DialogueUIManager` that displays NPC name, dialogue text, and close controls using standard Unity UI.
+- Added `Abbey Steward Maren` as a test NPC in the GreenvaleAbbey scene with original placeholder dialogue.
+- Updated the GreenvaleAbbey scene build settings path.
+- Added documentation for NPC dialogue setup, testing, and milestone prompt context.
+
 ## 2026-05-25 - Milestone 1: Player Controller and Camera
 
 - Added a simple third-person player controller using `CharacterController`.

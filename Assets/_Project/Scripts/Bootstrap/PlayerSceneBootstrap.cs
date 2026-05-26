@@ -32,7 +32,7 @@ namespace GreenvaleAbbey.Bootstrap
                 gameplayCamera = Camera.main;
             }
 
-            ThirdPersonPlayerController player = FindFirstObjectByType<ThirdPersonPlayerController>();
+            ThirdPersonPlayerController player = FindAnyObjectByType<ThirdPersonPlayerController>();
             if (player == null)
             {
                 player = CreatePlayer();
