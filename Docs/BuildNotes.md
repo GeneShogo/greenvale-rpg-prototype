@@ -1,5 +1,41 @@
 # Build Notes
 
+## MCP-Assisted Abbey Hub Staging Cleanup
+
+### Setup Notes
+
+- `GreenvaleAbbey.unity` remains the active scene at `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
+- `GreenvaleBlockoutBuilder` remains locked on `--- WORLD ---`; keep `autoGenerateInEditMode` and `allowRegeneration` disabled.
+- `Abbey_Art_Pass_01` remains under `--- WORLD --- / Abbey_Hub`.
+- `Disabled_Failed_Building_Attempts` exists under `Abbey_Art_Pass_01`.
+- Failed building groups are disabled under that staging parent:
+  - `Main_Hall_Kitbash`
+  - `Tower_Landmark_Kitbash`
+- Useful non-building dressing remains active:
+  - `Entrance_Approach`
+  - `Entrance_Props`
+  - `Nature_Set_Dressing`
+- `Abbey_Main_Blockout` and `BellTower_Blockout` are active as temporary readable placeholders.
+- `Abbey_Building_Replacement_Anchor` now sits directly under `Abbey_Hub`, with drop markers for future manual asset placement.
+- `Abbey Steward Maren` is active near the front approach and still has `NPCDialogue`.
+
+### Testing Steps
+
+1. Open `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
+2. Confirm `--- WORLD --- / Abbey_Hub / Abbey_Art_Pass_01` still exists.
+3. Confirm `Disabled_Failed_Building_Attempts` contains disabled `Main_Hall_Kitbash` and `Tower_Landmark_Kitbash`.
+4. Confirm `Abbey_Main_Blockout` and `BellTower_Blockout` are visible.
+5. Confirm `Abbey_Building_Replacement_Anchor` is under `Abbey_Hub` and contains `MainBuilding_DropHere`, `Tower_DropHere`, and `Entrance_DropHere`.
+6. Press Play, walk to the abbey entrance approach, and press E near `Abbey Steward Maren`.
+7. Confirm the dialogue opens and closes, then verify player movement still works.
+8. Check the Console for compile errors.
+
+### Unity Editor Actions Required
+
+- No blockout regeneration is required.
+- Do not run or unlock `GreenvaleBlockoutBuilder`.
+- When choosing a future building asset, drop it at `Abbey_Building_Replacement_Anchor / MainBuilding_DropHere`, then align the tower and entrance using the sibling marker objects.
+
 ## Cleanup - Abbey Hub Art Pass 01 Manual Replacement Prep
 
 ### Setup Notes
@@ -10,7 +46,7 @@
   - `Hall_Massing_Roof`
   - `Tower_Massing_Shaft`
 - The original `Abbey_Main_Blockout` and `BellTower_Blockout` are restored as temporary placement references.
-- `Abbey_Building_Replacement_Anchor` is created under `Abbey_Art_Pass_01`.
+- `Abbey_Building_Replacement_Anchor` now lives directly under `Abbey_Hub`.
 - The anchor contains:
   - `MainBuilding_DropHere`
   - `Tower_DropHere`
@@ -24,7 +60,7 @@
 2. Open `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
 3. Expand `--- WORLD --- / Abbey_Hub / Abbey_Art_Pass_01`.
 4. Confirm the gray massing objects are disabled.
-5. Confirm `Abbey_Building_Replacement_Anchor` and its three drop markers exist.
+5. Confirm `Abbey_Hub / Abbey_Building_Replacement_Anchor` and its three drop markers exist.
 6. Confirm `Abbey_Main_Blockout` and `BellTower_Blockout` are visible as temporary references.
 7. Enter Play Mode and verify the player can walk around the entrance and interact with `Abbey Steward Maren`.
 

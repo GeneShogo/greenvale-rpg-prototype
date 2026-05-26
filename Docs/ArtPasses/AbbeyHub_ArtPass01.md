@@ -96,17 +96,19 @@ The automatic building kitbash was still not visually acceptable as an abbey. Th
 
 Cleanup behavior:
 
-- Disables `Hall_Massing_MainBody`.
-- Disables `Hall_Massing_Roof`.
-- Disables `Tower_Massing_Shaft`.
-- Keeps entrance props, path stones, trees, bushes, rocks, grass, and small modular dressing if they do not block movement.
-- Restores `Abbey_Main_Blockout` and `BellTower_Blockout` as simple temporary references.
-- Creates `Abbey_Building_Replacement_Anchor`.
+- Keeps `Abbey_Art_Pass_01` under `--- WORLD --- / Abbey_Hub`.
+- Creates `Disabled_Failed_Building_Attempts` under `Abbey_Art_Pass_01`.
+- Moves `Main_Hall_Kitbash` and `Tower_Landmark_Kitbash` under `Disabled_Failed_Building_Attempts` and disables them.
+- Preserves the disabled kitbash children instead of deleting the modular wall, roof, door, and tower pieces.
+- Keeps entrance props, path stones, trees, bushes, rocks, grass, and small non-building dressing active if they do not block movement.
+- Keeps `Abbey_Main_Blockout` and `BellTower_Blockout` active as the temporary readable abbey placeholder.
+- Moves `Abbey_Building_Replacement_Anchor` directly under `Abbey_Hub` so future building placement is not nested inside the failed art pass.
+- Keeps `Abbey Steward Maren` active and moves her to the clear front approach near the entrance.
 
 Replacement markers:
 
 - `MainBuilding_DropHere`: local position `(0, 0, 0.25)`.
-- `Tower_DropHere`: local position `(3.2, 0, 1.55)`.
-- `Entrance_DropHere`: local position `(0, 0, -3.1)`.
+- `Tower_DropHere`: local position `(1.55, 0, 0.95)`.
+- `Entrance_DropHere`: local position `(0, 0, -2.2)`.
 
 Use these markers to manually place a better building asset later. Keep the locked blockout builder disabled and do not regenerate the full blockout during manual replacement.

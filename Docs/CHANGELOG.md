@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-05-26 - MCP-Assisted Abbey Hub Staging Cleanup
+
+- Used Unity MCP to clean up `--- WORLD --- / Abbey_Hub` while preserving the locked `GreenvaleBlockoutBuilder`.
+- Moved the failed `Main_Hall_Kitbash` and `Tower_Landmark_Kitbash` under `Disabled_Failed_Building_Attempts` and disabled them without deleting their child modular pieces.
+- Kept `Entrance_Approach`, `Entrance_Props`, and `Nature_Set_Dressing` active for useful hub staging.
+- Kept `Abbey_Main_Blockout` and `BellTower_Blockout` active as the temporary readable abbey placeholder.
+- Moved `Abbey_Building_Replacement_Anchor` directly under `Abbey_Hub` and aligned its drop markers for a future manually selected building asset.
+- Moved `Abbey Steward Maren` to the clear front approach while preserving her `NPCDialogue` setup.
+
 ## 2026-05-26 - Cleanup: Abbey Hub Art Pass 01 Manual Replacement Prep
 
 - Converted the failed Abbey Hub automatic building kitbash into a temporary staging setup.
