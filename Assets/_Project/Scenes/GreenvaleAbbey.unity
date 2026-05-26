@@ -410,6 +410,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1147785203}
+  - component: {fileID: 1147785204}
   m_Layer: 0
   m_Name: --- GAMEPLAY ---
   m_TagString: Untagged
@@ -432,6 +433,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1147785204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147785202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86fee3ff36c24fa69c84c23a696e5c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpawnPoint: {fileID: 1354995519}
+  gameplayCamera: {fileID: 310885476}
+  playerName: Greenvale Player
+  controllerHeight: 1.8
+  controllerRadius: 0.35
+  addDebugInteractableToStartMarker: 1
+  startMarkerName: Player_Start_Marker
 --- !u!1 &1354995518
 GameObject:
   m_ObjectHideFlags: 0
