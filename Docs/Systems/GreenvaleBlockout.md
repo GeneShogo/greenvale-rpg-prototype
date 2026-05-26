@@ -115,6 +115,23 @@ Recommended workflow:
 5. Leave `GreenvaleBlockoutBuilder` locked so manual replacements are not overwritten.
 6. Do not use copyrighted maps, names, quest text, icons, music, or recreated layouts from other games.
 
+## Abbey Hub Art Pass 01
+
+The first asset replacement pass targets only `--- WORLD --- / Abbey_Hub`.
+
+`AbbeyHubArtPass01Placer` is attached to `Abbey_Hub` and creates `Abbey_Art_Pass_01` if it is missing. It instantiates a small kitbash from already imported Quaternius assets:
+
+- Medieval Village MegaKit for wall, roof, door, stair, fence, and tower pieces.
+- Fantasy Props MegaKit for bench, barrel, crate, lantern, and banner dressing.
+- Stylized Nature MegaKit for trees, bushes, rocks, grass, and approach stones.
+
+After creation, the pass disables only the replaced abbey-specific blockout objects:
+
+- `Abbey_Main_Blockout`
+- `BellTower_Blockout`
+
+The blockout objects are preserved in the hierarchy as scale references. The placer should be treated as a setup helper; after the scene is saved, future art edits should happen manually under `Abbey_Art_Pass_01`.
+
 ## Player And NPC Preservation
 
 Milestone 3 does not move `PlayerSpawnPoint` or `Abbey Steward Maren`. The existing player bootstrap, camera follow, interaction raycast, and NPC dialogue flow remain the functional test path.

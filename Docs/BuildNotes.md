@@ -1,5 +1,91 @@
 # Build Notes
 
+## Cleanup - Abbey Hub Art Pass 01 Manual Replacement Prep
+
+### Setup Notes
+
+- `Abbey_Art_Pass_01` is preserved under `--- WORLD --- / Abbey_Hub`.
+- The failed gray massing objects are disabled, not deleted:
+  - `Hall_Massing_MainBody`
+  - `Hall_Massing_Roof`
+  - `Tower_Massing_Shaft`
+- The original `Abbey_Main_Blockout` and `BellTower_Blockout` are restored as temporary placement references.
+- `Abbey_Building_Replacement_Anchor` is created under `Abbey_Art_Pass_01`.
+- The anchor contains:
+  - `MainBuilding_DropHere`
+  - `Tower_DropHere`
+  - `Entrance_DropHere`
+- Useful entrance props, path stones, trees, bushes, rocks, and grass remain for scene context.
+- `GreenvaleBlockoutBuilder` remains locked.
+
+### Testing Steps
+
+1. Let Unity compile the updated `AbbeyHubArtPass01Placer`.
+2. Open `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
+3. Expand `--- WORLD --- / Abbey_Hub / Abbey_Art_Pass_01`.
+4. Confirm the gray massing objects are disabled.
+5. Confirm `Abbey_Building_Replacement_Anchor` and its three drop markers exist.
+6. Confirm `Abbey_Main_Blockout` and `BellTower_Blockout` are visible as temporary references.
+7. Enter Play Mode and verify the player can walk around the entrance and interact with `Abbey Steward Maren`.
+
+### Unity Editor Actions Required
+
+- Save the scene after cleanup applies.
+- If cleanup does not apply automatically, select `Abbey_Hub` and run the context menu `Prepare Abbey Hub For Manual Building Replacement`.
+- Later, manually drop a selected building asset at `MainBuilding_DropHere`, a tower asset at `Tower_DropHere`, and align the entry at `Entrance_DropHere`.
+
+## Repair - Abbey Hub Art Pass 01 Scale and Readability
+
+### Setup Notes
+
+- `AbbeyHubArtPass01Placer` now includes a one-time readability repair for `Abbey_Art_Pass_01`.
+- The repair adds large project-owned massing primitives under `Main_Hall_Kitbash` so the hall reads clearly from Scene view and Play Mode.
+- Existing Quaternius modular wall, roof, door, prop, and nature pieces are retained as dressing.
+- Large trees, rocks, bushes, and fences are moved outward from the front of the hall.
+- `Abbey Steward Maren` is moved near the abbey entrance and remains active with `NPCDialogue`.
+- `GreenvaleBlockoutBuilder` remains locked; do not enable `autoGenerateInEditMode` or `allowRegeneration`.
+
+### Testing Steps
+
+1. Let Unity compile the updated `AbbeyHubArtPass01Placer` script.
+2. Open `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
+3. Confirm `--- WORLD --- / Abbey_Hub / Abbey_Art_Pass_01 / Main_Hall_Kitbash` contains `Hall_Massing_MainBody` and `Hall_Massing_Roof`.
+4. Confirm the hall is larger than the player/NPC and reads as the primary Abbey Hub object.
+5. Confirm trees and rocks are on the sides/back rather than blocking the front.
+6. Enter Play Mode and walk to the entrance.
+7. Press E near `Abbey Steward Maren` and confirm dialogue still opens.
+
+### Unity Editor Actions Required
+
+- Save the scene after the repair has applied.
+- If the repair does not apply automatically, select `Abbey_Hub` and run the `AbbeyHubArtPass01Placer` context menu `Repair Abbey Art Pass 01 Readability`.
+
+## Manual Asset Replacement Pass 1 - Abbey Hub First Art Pass
+
+### Setup Notes
+
+- Open `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
+- `Abbey_Hub` has an `AbbeyHubArtPass01Placer` component.
+- On first editor reload, the placer creates `Abbey_Art_Pass_01` under `--- WORLD --- / Abbey_Hub` if that parent is missing.
+- The placer instantiates selected imported Quaternius FBX assets and then marks itself generated.
+- `GreenvaleBlockoutBuilder` remains locked: keep `autoGenerateInEditMode` disabled and `allowRegeneration` disabled.
+- The art pass disables only `Abbey_Main_Blockout` and `BellTower_Blockout` after creating the art parent.
+
+### Testing Steps
+
+1. Let Unity compile the new `AbbeyHubArtPass01Placer` script.
+2. Open `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
+3. Expand `--- WORLD --- / Abbey_Hub` and confirm `Abbey_Art_Pass_01` exists.
+4. Confirm `Abbey_Art_Pass_01` contains a main hall kitbash, tower landmark, entrance props, path stones, and nature dressing.
+5. Confirm `Abbey_Main_Blockout` and `BellTower_Blockout` are preserved but disabled.
+6. Press Play and verify player movement, camera follow, interaction raycast, and `Abbey Steward Maren` dialogue still work.
+
+### Unity Editor Actions Required
+
+- Save the scene after the art pass has generated.
+- If the art pass does not appear, select `Abbey_Hub` and use the `AbbeyHubArtPass01Placer` context menu `Create Abbey Art Pass 01`.
+- Manually inspect scale, rotations, and collisions; this is a rough first pass.
+
 ## Milestone 3.5 - Lock Blockout and Prepare for Asset Replacement
 
 ### Setup Notes

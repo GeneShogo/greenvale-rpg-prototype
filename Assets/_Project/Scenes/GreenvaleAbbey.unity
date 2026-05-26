@@ -3128,7 +3128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoGenerateInEditMode: 0
   allowRegeneration: 0
-  regenerationConfirmation: REBUILD_GREENVALE_BLOCKOUT
+  regenerationConfirmation: 
   reparentGroundPlane: 1
   markerScale: {x: 0.6, y: 0.6, z: 0.6}
 --- !u!1 &1845593756
@@ -3680,6 +3680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2054153179}
+  - component: {fileID: 2054153180}
   m_Layer: 0
   m_Name: Abbey_Hub
   m_TagString: Untagged
@@ -3704,6 +3705,21 @@ Transform:
   - {fileID: 584624815}
   m_Father: {fileID: 1834822606}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2054153180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054153178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cdf57f76032436b9584c7c409937aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  createIfMissing: 1
+  generated: 0
+  manualReplacementCleanupApplied: 0
 --- !u!1 &2058502405
 GameObject:
   m_ObjectHideFlags: 0

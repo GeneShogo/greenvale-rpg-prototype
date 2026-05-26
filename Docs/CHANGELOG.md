@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-05-26 - Cleanup: Abbey Hub Art Pass 01 Manual Replacement Prep
+
+- Converted the failed Abbey Hub automatic building kitbash into a temporary staging setup.
+- Disabled gray primitive massing objects instead of deleting them.
+- Restored the original abbey blockout pieces as temporary building references.
+- Added `Abbey_Building_Replacement_Anchor` with `MainBuilding_DropHere`, `Tower_DropHere`, and `Entrance_DropHere` markers.
+- Kept useful entrance props, path pieces, nature dressing, `Abbey Steward Maren`, and locked blockout builder settings.
+
+## 2026-05-26 - Repair: Abbey Hub Art Pass 01 Scale and Readability
+
+- Updated `AbbeyHubArtPass01Placer` to repair the generated Abbey Hub art pass with a larger readable hall mass, larger roof mass, and clearer tower silhouette.
+- Moved trees, rocks, bushes, fences, and props away from the hall frontage so the building remains the dominant visual.
+- Added a simple entrance apron and moved `Abbey Steward Maren` near the entrance while preserving `NPCDialogue`.
+- Kept `GreenvaleBlockoutBuilder` locked and did not run blockout regeneration.
+
+## 2026-05-26 - Manual Asset Replacement Pass 1: Abbey Hub First Art Pass
+
+- Added an `AbbeyHubArtPass01Placer` one-shot edit-mode placer to the `Abbey_Hub` scene object.
+- Set up `Abbey_Art_Pass_01` generation using imported Quaternius Medieval Village, Fantasy Props, and Stylized Nature assets.
+- Preserved the locked `GreenvaleBlockoutBuilder` settings and existing gameplay/NPC systems.
+- Documented the Abbey Hub art pass assets, replacement approach, and manual polish needs.
+
 ## 2026-05-26 - Milestone 3.5: Lock Blockout and Prepare for Asset Replacement
 
 - Locked `GreenvaleBlockoutBuilder` so it no longer regenerates on scene open or Play Mode entry.
