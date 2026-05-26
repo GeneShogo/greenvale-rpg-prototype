@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-05-26 - Milestone 3: Greenvale Abbey Blockout Framework
+
+- Added a `GreenvaleBlockoutBuilder` component to the `--- WORLD ---` scene root.
+- Added an edit-mode blockout framework that creates/verifies landmark parent groups, visible markers, simple placeholder primitives, road/path blockouts, and blockout materials.
+- Preserved `PlayerSpawnPoint`, player bootstrap behavior, interaction raycast, and `Abbey Steward Maren` dialogue setup.
+- Updated build notes and added blockout system documentation.
+
 ## 2026-05-25 - Milestone 2: Interaction and NPC Dialogue
 
 - Added an `NPCDialogue` interactable component for simple data-ready NPC conversations.

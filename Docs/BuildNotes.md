@@ -1,5 +1,32 @@
 # Build Notes
 
+## Milestone 3 - Greenvale Abbey Blockout Framework
+
+### Setup Notes
+
+- Open `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
+- The `--- WORLD ---` object has a `GreenvaleBlockoutBuilder` component.
+- In edit mode, the builder creates/verifies the blockout hierarchy, visible marker primitives, placeholder geometry, and blockout materials.
+- Generated blockout materials are stored under `Assets/_Project/Materials/Blockout/`.
+- The active scene path remains `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
+- The builder reparents `Ground_TestPlane` under `Terrain_Blockout` without changing its world position.
+- `PlayerSpawnPoint`, `PlayerSceneBootstrap`, and `Abbey Steward Maren` are preserved.
+
+### Testing Steps
+
+1. Open `Assets/_Project/Scenes/GreenvaleAbbey.unity`.
+2. Select `--- WORLD ---` and confirm `GreenvaleBlockoutBuilder` is enabled.
+3. If the hierarchy has not generated yet, use the component context menu `Build Greenvale Blockout`.
+4. Confirm these child groups exist under `--- WORLD ---`: `Landmark_Markers`, `Terrain_Blockout`, `Roads_And_Paths`, `Abbey_Hub`, `Training_Yard`, `Forest_Edge`, `Farm_Field`, `Quarry_Road`, `Quarry_Entrance`, `Base_Plot`, `Creek_Or_Pond`, `Hilltop_Overlook`, and `Set_Dressing_Placeholders`.
+5. Confirm the named landmark markers and placeholder blockouts are visible in the scene.
+6. Press Play and verify movement, camera follow, and `Abbey Steward Maren` dialogue still work.
+
+### Unity Editor Actions Required
+
+- Let Unity compile the new `GreenvaleBlockoutBuilder` script.
+- Save the scene after the builder generates the framework if you want the generated objects serialized immediately.
+- Replace placeholder primitives manually with Quaternius assets later, keeping third-party source assets under `Assets/ThirdParty/` and project prefabs under `Assets/_Project/`.
+
 ## Milestone 2 - Interaction and NPC Dialogue
 
 ### Setup Notes

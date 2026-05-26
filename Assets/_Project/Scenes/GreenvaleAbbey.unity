@@ -765,6 +765,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1834822606}
+  - component: {fileID: 1834822607}
   m_Layer: 0
   m_Name: --- WORLD ---
   m_TagString: Untagged
@@ -788,6 +789,21 @@ Transform:
   - {fileID: 1545933611}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1834822607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834822605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1c8780ca5142f39fb925292c0f7db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildOnEnable: 1
+  reparentGroundPlane: 1
+  markerScale: {x: 0.6, y: 0.6, z: 0.6}
 --- !u!1 &1894185395
 GameObject:
   m_ObjectHideFlags: 0
